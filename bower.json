@@ -1,0 +1,23 @@
+{
+  "name": "uk-components",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dragn/uk-components",
+  "authors": [
+    "Daniel Sabelnikov <dsabelnikov@alfabank.ru>"
+  ],
+  "description": "Angular components for UIKit",
+  "main": "src/*.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.8",
+    "angular-mocks": "~1.3.8",
+    "uikit": "~2.15.0"
+  }
+}

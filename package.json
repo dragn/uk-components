@@ -1,0 +1,29 @@
+{
+  "name": "uk-components",
+  "version": "1.0.0",
+  "description": "uk-components\r =============",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dragn/uk-components"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dragn/uk-components/issues"
+  },
+  "homepage": "https://github.com/dragn/uk-components",
+  "devDependencies": {
+    "karma": "^0.12.28",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "karma-jasmine": "^0.3.2"
+  }
+}
