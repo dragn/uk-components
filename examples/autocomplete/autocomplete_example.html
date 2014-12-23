@@ -8,24 +8,27 @@
       <div class="uk-form" ng-controller="ExampleCtrl">
         <h2>No items, no template</h2>
         <div class="uk-form-row">
-          <uk-autocomplete ng-model="value1"></uk-autocomplete>
+          <input type="text" ng-model="value1">
+          <uk-autocomplete></uk-autocomplete>
         </div>
         <div class="uk-form-row">
           Selected: {{ value1 }}
         </div>
         <h2>With items, no template</h2>
         <div class="uk-form-row">
-          <uk-autocomplete ng-model="value2" uk-items="[ 'Moscow', 'London', 'New York' ]"></uk-autocomplete>
+          <input type="text" ng-model="value2">
+          <uk-autocomplete uk-items="[ 'Moscow', 'London', 'New York' ]"></uk-autocomplete>
         </div>
         <div class="uk-form-row">
           Selected: {{ value2 }}
         </div>
         <h2>Template and object items</h2>
         <div class="uk-form-row">
-          <uk-autocomplete ng-model="value3" uk-items="cities" uk-select="obj = $item">
-            <i class="uk-icon uk-icon-large uk-icon-globe uk-float-left uk-margin-right"></i>
-            <div>{{ item.city }}</div>
-            <small>{{ item.country }}</small>
+          <input type="text" ng-model="value3">
+          <uk-autocomplete uk-items="cities" uk-select="obj = $item">
+          <i class="uk-icon uk-icon-large uk-icon-globe uk-float-left uk-margin-right"></i>
+          <div>{{ item.city }}</div>
+          <small>{{ item.country }}</small>
           </uk-autocomplete>
         </div>
         <div class="uk-form-row">
@@ -41,14 +44,14 @@
     <script src="../../src/autocomplete/autocomplete.js"></script>
 
     <script>
-      angular.module('AutocompleteApp', [ 'ukAutocomplete' ])
-        .controller('ExampleCtrl', function($scope) {
-          $scope.cities = [
-            { city: 'Moscow', country: 'Russia', value: 'MOSCOW' },
-            { city: 'London', country: 'United Kingdom', value: 'LONDON' },
-            { city: 'New York', country: 'USA', value: 'NEW YORK' }
-          ]
-        });
+angular.module('AutocompleteApp', [ 'ukAutocomplete' ])
+.controller('ExampleCtrl', function($scope) {
+  $scope.cities = [
+  { city: 'Moscow', country: 'Russia', value: 'MOSCOW' },
+  { city: 'London', country: 'United Kingdom', value: 'LONDON' },
+  { city: 'New York', country: 'USA', value: 'NEW YORK' }
+  ]
+});
     </script>
   </body>
 </html>

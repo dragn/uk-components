@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-  
+
   var mod = angular.module('ukAutocomplete', []);
 
   mod.directive('ukAutocomplete', [ '$parse', '$timeout', '$compile', function($parse, $timeout, $compile) {
@@ -9,32 +9,43 @@
       restrict: 'E',
       scope: true,
       link: function(scope, element, attrs) {
-        var itemTemplate = element.html() || '{{ item }}',
-            valueExpr = attrs.ngModel ? '$parent.' + attrs.ngModel : '$value',
-            template = 
+        scope.$items = attrs.ukItems ? scope.$items = $parse(attrs.ukItems)(scope) : [];
+        scope.$open = false;
+        scope.$select = function(val) {
+          var value = typeof val == 'string' ? val : val.value;
+          scope.$open = false;
+          scope.$value   && scope.$parent.$evalAsync(scope.$value + '="' + value + '"');
+          attrs.ukSelect && scope.$parent.$evalAsync(attrs.ukSelect, { $item: val });
+        };
+
+        // Find input in parent container
+        var input = element.parent().find('input');
+
+        // Show dropdown on input's focus
+        input.on('focus', scope.$apply.bind(scope, '$open = true'));
+
+        // Hide dropdown on input's blur
+        input.on('blur', scope.$apply.bind(scope, '$open = false'));
+
+        if (input.attr('ng-model')) {
+          scope.$value = input.attr('ng-model');
+        }
+
+        var itemTemplate = element.html() || '<span ng-bind="item"></span>';
+        var template =
           '<div class="uk-position-relative" ' +
           '     ng-class="{ \'uk-open\' : $open && $items.length > 0 }">' +
-          '<input type="text" ng-focus="$open=true" ng-blur="$open=false" ng-model="' + valueExpr + '" ng-change="$change()">' +
           '<div class="uk-dropdown uk-dropdown-scrollable">' +
           '  <ul class="uk-nav uk-nav-dropdown">' +
           '    <li ng-repeat="' + (attrs.var || 'item') + ' in $items">' +
           '      <a ng-mousedown="$select(item)">' + itemTemplate + '</a>' +
           '    </li>' +
           '  </ul>' +
+          '</div>' +
           '</div>';
+
         element.html(template);
-        scope.$items = attrs.ukItems ? scope.$items = $parse(attrs.ukItems)(scope) : [];
-        scope.$open = false;
-        scope.$select = function(val) {
-          var value = typeof val == 'string' ? val : val.value;
-          scope.$eval(valueExpr + '="' + value + '"');
-          if (attrs.ukSelect) {
-            scope.$parent.$eval(attrs.ukSelect, { $item: val });
-          }
-        };
-        scope.$change = function() {
-          // TODO
-        };
+
         $compile(element.contents())(scope);
       }
     }
