@@ -18,6 +18,7 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'src/**/*.js',
+      'src/**/*.html',
       'tests/**/*.coffee'
     ],
 
@@ -30,6 +31,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'src/**/*.html': [ 'ng-html2js' ],
       'tests/**/*.coffee': ['coffee']
     },
 

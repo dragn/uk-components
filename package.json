@@ -9,7 +9,10 @@
   },
   "scripts": {
     "pretest": "npm install && bower install",
-    "test": "karma start karma.conf.js"
+    "test": "karma start karma.conf.js",
+    "test-single-run": "karma start karma.conf.js --single-run",
+    "prestart": "npm install && bower install",
+    "start": "http-server -a localhost -p 3000 ."
   },
   "repository": {
     "type": "git",
@@ -22,9 +25,11 @@
   },
   "homepage": "https://github.com/dragn/uk-components",
   "devDependencies": {
+    "http-server": "^0.7.4",
     "karma": "^0.12.28",
     "karma-chrome-launcher": "^0.1.7",
     "karma-coffee-preprocessor": "^0.2.1",
-    "karma-jasmine": "^0.3.2"
+    "karma-jasmine": "^0.3.2",
+    "karma-ng-html2js-preprocessor": "^0.1.2"
   }
 }
