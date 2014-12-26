@@ -22,7 +22,10 @@
         var input = element.parent().find('input');
 
         // Show dropdown on input's focus
-        input.on('focus', scope.$apply.bind(scope, '$open = true'));
+        input.on('focus', function() {
+          angular.element(element.find('div')[1]).css('width', input.css('width'));
+          scope.$apply('$open = true');
+        });
 
         // Hide dropdown on input's blur
         input.on('blur', scope.$apply.bind(scope, '$open = false'));
