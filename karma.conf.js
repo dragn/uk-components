@@ -47,6 +47,10 @@ module.exports = function(config) {
       }
     },
 
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'src/adaptive-navbar/'
+    },
+
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter

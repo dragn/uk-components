@@ -12,14 +12,13 @@
       scope: {
         items: '=ukItems'
       },
-      template: '\
-      <div class="uk-navbar">\
-      <ul class="uk-navbar-nav">\
-      <li ng-repeat="item in items">\
-      <a href="#{{ item.path }}" ng-bind="item.title"></a>\
-      </li>\
-      </ul>\
-      </div>',
+      transclude: true,
+      templateUrl: function() {
+        var isSmall = screen.width && screen.width < 767;
+        // todo: do something with the url
+        var base = '../bower_components/uk-components/src/adaptive-navbar/adaptive-navbar.html';
+        return base + (isSmall ? 'adaptive-navbar-small.html' : 'adaptive-navbar.html');
+      },
       controller: [ '$scope', '$element', '$location', function($scope, $element, $location) {
         var path = '', href, el;
         $scope.$on('$locationChangeSuccess', function(event, newUrl) {
