@@ -1,7 +1,6 @@
 describe 'ukAdaptiveNavbar directive', ->
 
   beforeEach -> module 'ukAdaptiveNavbar'
-  beforeEach -> module 'src/adaptive-navbar/adaptive-navbar.html'
 
   $rootScope = {}
   $compile   = {}
