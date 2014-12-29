@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="adaptiveNavbarApp">
+  <head>
+    <link rel="stylesheet" href="../../bower_components/uikit/css/uikit.almost-flat.css">
+  </head>
+  <body ng-controller="ExampleCtrl">
+    <div class="uk-container uk-container-center">
+      <uk-adaptive-navbar uk-items="items">
+      </uk-adaptive-navbar>
+    </div>
+
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../bower_components/uikit/js/uikit.js"></script>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../src/adaptive-navbar/adaptive-navbar.js"></script>
+
+    <script>
+var app = angular.module('adaptiveNavbarApp', ['ukAdaptiveNavbar'])
+app.controller('ExampleCtrl', ['$scope', function($scope) {
+  $scope.items = [
+  { title: 'Main page', path: '/' },
+  { title: 'Page 1', path: '/page1' },
+  { title: 'Page 2', path: '/page2' }
+  ];
+}]);
+    </script>
+  </body>
+</html>
