@@ -16,7 +16,7 @@
       templateUrl: function() {
         var isSmall = screen.width && screen.width < 767;
         // todo: do something with the url
-        var base = '../bower_components/uk-components/src/adaptive-navbar/adaptive-navbar.html';
+        var base = '../bower_components/uk-components/src/adaptive-navbar/';
         return base + (isSmall ? 'adaptive-navbar-small.html' : 'adaptive-navbar.html');
       },
       controller: [ '$scope', '$element', '$location', function($scope, $element, $location) {
