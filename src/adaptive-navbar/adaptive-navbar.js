@@ -30,10 +30,9 @@
             });
           }
         };
-        handlePath();
         $scope.$on('$locationChangeSuccess', handlePath);
         $scope['class'] = function(item) {
-          return $location.path() == item.path ? 'uk-active': '';
+          return ($location.path() || '/') == item.path ? 'uk-active': '';
         }
       }]
     };

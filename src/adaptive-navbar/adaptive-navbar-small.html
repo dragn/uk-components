@@ -5,7 +5,7 @@
 <div id="uk-navbar-offcanvas" class="uk-offcanvas">
   <div class="uk-offcanvas-bar">
     <ul class="uk-nav uk-nav-offcanvas">
-      <li ng-repeat="item in items">
+      <li ng-repeat="item in items" class="{{ ::class(item) }}">
         <a href="#{{ item.path }}" ng-bind="item.title"></a>
       </li>
     </ul>
