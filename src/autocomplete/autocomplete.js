@@ -13,10 +13,11 @@
           // bind to uk-items attribute
           scope.$watch(attrs.ukItems, function(value) { scope.$items = value; });
         }
+        var valueProperty = attrs.ukValue || 'value';
         scope.$items = [];
         scope.$open = false;
         scope.$select = function(val) {
-          var value = typeof val == 'string' ? val : val.value;
+          var value = typeof val == 'string' ? val : val[valueProperty];
           scope.$open = false;
           scope.$value   && scope.$parent.$evalAsync(scope.$value + '="' + value + '"');
           attrs.ukSelect && scope.$parent.$evalAsync(attrs.ukSelect, { $item: val });
