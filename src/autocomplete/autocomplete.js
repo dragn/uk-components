@@ -9,7 +9,11 @@
       restrict: 'E',
       scope: true,
       link: function(scope, element, attrs) {
-        scope.$items = attrs.ukItems ? scope.$items = $parse(attrs.ukItems)(scope) : [];
+        if (attrs.ukItems) {
+          // bind to uk-items attribute
+          scope.$watch(attrs.ukItems, function(value) { scope.$items = value; });
+        }
+        scope.$items = [];
         scope.$open = false;
         scope.$select = function(val) {
           var value = typeof val == 'string' ? val : val.value;

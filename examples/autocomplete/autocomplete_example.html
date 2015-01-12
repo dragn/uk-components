@@ -25,11 +25,14 @@
         <h2>Template and object items</h2>
         <div class="uk-form-row">
           <input type="text" ng-model="value3">
-          <uk-autocomplete uk-items="cities" uk-select="obj = $item">
+          <uk-autocomplete uk-items="::cities" uk-select="obj = $item">
           <i class="uk-icon uk-icon-large uk-icon-globe uk-float-left uk-margin-right"></i>
           <div>{{ item.city }}</div>
           <small>{{ item.country }}</small>
           </uk-autocomplete>
+        </div>
+        <div class="uk-form-row">
+          <button class="uk-button uk-button-primary" ng-click="updateList()">update list</button>
         </div>
         <div class="uk-form-row">
           Selected: {{ value3 }}<br/>
@@ -50,8 +53,13 @@ angular.module('AutocompleteApp', [ 'ukAutocomplete' ])
   { city: 'Moscow', country: 'Russia', value: 'MOSCOW' },
   { city: 'London', country: 'United Kingdom', value: 'LONDON' },
   { city: 'New York', country: 'USA', value: 'NEW YORK' }
-  ]
+  ];
+
+  $scope.updateList = function() {
+    $scope.cities.push({ city: 'Alabama', country: 'USA', value: 'ALABAMA' });
+  }
 });
+
     </script>
   </body>
 </html>
