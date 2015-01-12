@@ -4,6 +4,8 @@
   var scripts = document.getElementsByTagName("script")
   var currentScriptPath = scripts[scripts.length-1].src;
 
+  var template = '<div class="uk-navbar"><ul class="uk-navbar-nav"><li ng-repeat="item in items" class="{{ ::class(item) }}"><a href="#{{ item.path }}" ng-bind="item.title"></a></li></ul><div ng-transclude></div></div>';
+  var templateSmall = '<div class="uk-navbar"><div class="uk-navbar-toggle" data-uk-offcanvas="{target:\'#uk-navbar-offcanvas\'}"></div><div ng-transclude></div></div><div id="uk-navbar-offcanvas" class="uk-offcanvas"><div class="uk-offcanvas-bar"><ul class="uk-nav uk-nav-offcanvas"><li ng-repeat="item in items" class="{{ ::class(item) }}"><a href="#{{ item.path }}" ng-bind="item.title"></a></li></ul></div></div>';
   var mod = angular.module('ukAdaptiveNavbar', []);
 
   mod.directive('ukAdaptiveNavbar', function() {
@@ -13,11 +15,9 @@
         items: '=ukItems'
       },
       transclude: true,
-      templateUrl: function() {
+      template: function() {
         var isSmall = screen.width && screen.width < 767;
-        // todo: do something with the url
-        var base = 'uk-components/src/adaptive-navbar/';
-        return base + (isSmall ? 'adaptive-navbar-small.html' : 'adaptive-navbar.html');
+        return isSmall ? templateSmall : template;
       },
       controller: ['$scope', '$element', '$location', function($scope, $element, $location) {
         var path = '', href, el;
